@@ -16,6 +16,7 @@
     <script src="../assets/js/search.js"></script>
     <script src="../assets/js/jquery.3.4.1.js"></script>
     <script src="../assets/js/argon-dashboard.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/argon.min.js"></script>
   </head>
   <body>
@@ -55,7 +56,7 @@
             <span class="btn-inner--icon"><img src="../assets/img/right.png" alt=""></span>
             <span class="btn-inner--text">Add note</span>
         </button>
-        <button class="btn btn-icon btn-3 btn-danger" type="button" id="delete-button" onclick="clearStorage();">
+        <button class="btn btn-icon btn-3 btn-danger" type="button" id="delete-button" onclick="prompt();">
             <span class="btn-inner--icon"><img src="../assets/img/cross.png" alt=""></span>
             <span class="btn-inner--text">Delete all notes</span>
         </button>
@@ -65,6 +66,10 @@
         <h2 id="my-notes">My Notes - 0</h2>
         <div class="ui cards" id="cards"></div>    
     </div>
+
+    <!-- View Modal -->
+    <div id="view-modal"></div>
+    <div id="delete-modal"></div>
 
   </body>
 
