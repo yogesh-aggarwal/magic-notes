@@ -4,10 +4,10 @@ function setup() {
   }
 }
 
-function prompt(_notes = true, _prompt) {
+function promptDeleteAll() {
   inner = `
   <div class="col-md-4">
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllModal" aria-hidden="true">
       <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
           <div class="modal-content bg-gradient-danger">
             
@@ -38,7 +38,44 @@ function prompt(_notes = true, _prompt) {
   `;
 
   document.getElementById("delete-modal").innerHTML = inner;
-  $("#deleteModal").modal();
+  $("#deleteAllModal").modal();
+}
+
+function promptDeleteNote(_id) {
+  inner = `
+  <div class="col-md-4">
+    <div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog" aria-labelledby="deleteNoteModal" aria-hidden="true">
+      <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+          <div class="modal-content bg-gradient-danger">
+            
+              <div class="modal-header">
+                  <h3 class="modal-title" id="modal-title-notification">Attention!</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              
+              <div class="modal-body">
+                
+                  <div class="py-3 text-center">
+                      <i class="ni ni-bell-55 ni-3x"></i>
+                      <h4 class="heading mt-4">Are you sure want to delete this note?</h4>
+                  </div>
+                  
+              </div>
+              
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-white" onclick="deleteNote(${_id});" data-dismiss="modal">Yes, delete it</button>
+                  <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button> 
+              </div>  
+          </div>
+      </div>
+    </div>
+  </div>
+  `;
+
+  document.getElementById("delete-modal").innerHTML = inner;
+  $("#deleteNoteModal").modal();
 }
 
 function clearStorage(_notes=true) {
@@ -54,7 +91,7 @@ function showNotes() {
 
   if (note != null) {
     note = note.notes;
-    if (note != undefined) {
+    if (note != undefined && note != 0) {
       let inner = ``;
       let count = 0;
 
@@ -66,7 +103,7 @@ function showNotes() {
                 <p class="card-text">${element.slice(0, 120)}</p>
                 <div class="card-footer">
                     <button class="btn btn-primary" id="${index}" style="float: left;" onclick="viewNote(this.id);"> View </button>
-                    <button class="btn btn-danger" id="${index}" style="float: right"; onclick="deleteNote(this.id);"> Delete </button>
+                    <button class="btn btn-danger" id="${index}" style="float: right"; onclick="promptDeleteNote(this.id);"> Delete </button>
                 </div>
             </div>
         </div>
