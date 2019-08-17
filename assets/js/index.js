@@ -110,7 +110,6 @@ function deleteNote(index) {
 }
 
 function viewNote(_id) {
-  console.log(_id);
   modalBody = JSON.parse(localStorage.getItem("notes")).notes[_id];
   let inner = `
   <div class="col-md-4">
@@ -118,7 +117,7 @@ function viewNote(_id) {
       <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h3 class="modal-title" id="modal-title-default">Note ${_id}</h3>
+                  <h3 class="modal-title" id="modal-title-default">Note ${_id+1}</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                   </button>
