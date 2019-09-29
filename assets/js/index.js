@@ -114,12 +114,12 @@ function showNotes() {
 
       document.getElementById("cards").innerHTML = inner;
     } else {
-      document.getElementById("cards").innerHTML = `No notes to show`;
+      document.getElementById("cards").innerHTML = `<p id="no-notes">No notes to show</p>`;
       localStorage.setItem("notes", JSON.stringify({ notes: [] }));
     }
   } else {
     setup();
-    document.getElementById("cards").innerHTML = `No notes to show`;
+    document.getElementById("cards").innerHTML = `<p id="no-notes">No notes to show</p>`;
   }
 }
 
